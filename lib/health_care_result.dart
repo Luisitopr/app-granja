@@ -36,9 +36,9 @@ class _HealthCareResultScreenState extends State<HealthCareResultScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.green.shade900,
+      backgroundColor: const Color.fromARGB(255, 35, 109, 76),
       appBar: AppBar(
-        backgroundColor: Colors.green.shade900,
+        backgroundColor: const Color.fromARGB(255, 35, 109, 76),
         elevation: 0,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back, color: Colors.white),

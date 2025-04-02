@@ -25,7 +25,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: _scaffoldKey,
-      backgroundColor: Color(0xFF236D4C),
+      backgroundColor: Color.fromARGB(255, 35, 109, 76),
       drawer: _buildUserProfileDrawer(),
       body: SafeArea(
         child: Padding(
@@ -55,7 +55,7 @@ class _HomeScreenState extends State<HomeScreen> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  _buildCategoryButton(context, "Animals", Color(0xFF44D7A8), "/home"),
+                  _buildCategoryButton(context, "Animals", Color.fromRGBO(68, 215, 168, 1), "/home"),
                   SizedBox(width: 10),
                   _buildCategoryButton(context, "Climate", Color(0xFF44D7A8), "/climate"),
                 ],

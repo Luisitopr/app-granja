@@ -5,12 +5,12 @@ class HealthCareScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.green.shade900, // Fondo verde oscuro
+      backgroundColor: Color(0xFF236D4C), // Fondo verde oscuro
       appBar: AppBar(
-        backgroundColor: Colors.green.shade900,
+        backgroundColor: Color(0xFF236D4C),
         elevation: 0,
         leading: IconButton(
-          icon: const Icon(Icons.logout, color: Colors.black), // Icono de logout
+          icon: const Icon(Icons.logout, color: Colors.black),
           onPressed: () {
             Navigator.pushReplacementNamed(context, '/home');
           },
@@ -19,17 +19,15 @@ class HealthCareScreen extends StatelessWidget {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          // Imagen superior centrada
           Center(
             child: Image.asset(
-              'assets/cow.png', // Imagen de referencia
+              'assets/cow.png',
               height: 150,
               fit: BoxFit.contain,
             ),
           ),
           const SizedBox(height: 24),
 
-          // Si no hay animales, muestra el mensaje
           sampleAnimals.isEmpty
               ? Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -62,37 +60,35 @@ class HealthCareScreen extends StatelessWidget {
 
           const SizedBox(height: 40),
 
-          // Botón "Register"
           ElevatedButton(
             onPressed: () {
               Navigator.pushReplacementNamed(context, '/register_home');
             },
             style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.green, // Color del botón
+              backgroundColor: Colors.green,
               shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10), // Bordes redondeados
+                borderRadius: BorderRadius.circular(10),
               ),
               padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 12),
             ),
             child: const Text(
               "Register",
               style: TextStyle(
-                color: Colors.white, // Texto en blanco
+                color: Colors.white,
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
               ),
             ),
           ),
 
-          const SizedBox(height: 16), // Espaciado entre botones
+          const SizedBox(height: 16),
 
-          // Botón "Other"
           ElevatedButton(
             onPressed: () {
               Navigator.pushReplacementNamed(context, '/health_care_result');
             },
             style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.blueGrey, // Color diferente para el botón
+              backgroundColor: Colors.blueGrey,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(10),
               ),
@@ -119,14 +115,25 @@ class HealthCareScreen extends StatelessWidget {
         scrollDirection: Axis.horizontal,
         child: DataTable(
           columnSpacing: 20,
-          headingRowColor: MaterialStateColor.resolveWith((states) => Colors.green.shade200),
-          border: TableBorder.all(color: Colors.black26),
+          headingRowColor: MaterialStateColor.resolveWith((states) => Color(0xFF236D4C)),
+          border: TableBorder.all(color: Colors.transparent, style: BorderStyle.solid, width: 1.5),
+          dataRowHeight: 60,
+          headingTextStyle: TextStyle(
+            fontWeight: FontWeight.w600,
+            color: Colors.white,
+            fontFamily: 'Roboto',
+          ),
+          dataTextStyle: TextStyle(
+            color: Colors.black87,
+            fontFamily: 'Roboto',
+            fontSize: 16,
+          ),
           columns: const [
-            DataColumn(label: Text("Name", style: TextStyle(fontWeight: FontWeight.bold))),
-            DataColumn(label: Text("Species", style: TextStyle(fontWeight: FontWeight.bold))),
-            DataColumn(label: Text("Breed", style: TextStyle(fontWeight: FontWeight.bold))),
-            DataColumn(label: Text("Qty", style: TextStyle(fontWeight: FontWeight.bold))),
-            DataColumn(label: Text("Care", style: TextStyle(fontWeight: FontWeight.bold))),
+            DataColumn(label: Text("Name", style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white))),
+            DataColumn(label: Text("Species", style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white))),
+            DataColumn(label: Text("Breed", style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white))),
+            DataColumn(label: Text("Qty", style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white))),
+            DataColumn(label: Text("Care", style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white))),
           ],
           rows: sampleAnimals
               .map(
@@ -138,20 +145,25 @@ class HealthCareScreen extends StatelessWidget {
                   DataCell(
                     ElevatedButton(
                       onPressed: () {
-                        Navigator.pushReplacementNamed(context, '/health_care_result');
+                        Navigator.pushNamed(
+                          context,
+                          '/health_care_result',
+                          arguments: animal.name,
+                        );
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.green,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
-                        padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 8), // Más pequeño
+                        padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 8),
+                        elevation: 5,
                       ),
                       child: const Text(
                         "Care",
                         style: TextStyle(
                           color: Colors.white,
-                          fontSize: 14, // Letra más pequeña
+                          fontSize: 14,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
